@@ -2,7 +2,23 @@
 	<nav class="navbar navbar-light bg-light">
 		<div class="container">
 			<a href="/" class="navbar-brand mr-auto">meteium</a>
-			<button class="btn btn-success">login</button>
+			{{#unless loggingIn}}
+				{{#if currentUser}}
+					<button class="btn btn-outline-secondary js-logout">logout</button>
+				{{else}}
+					<button class="btn btn-success js-open-modal">login</button>
+				{{/if}}
+			{{/unless}}
 		</div>
 	</nav>
+</template>
+
+<template name="login_modal">
+	<div class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				{{> atForm}}
+			</div>
+		</div>
+	</div>
 </template>
